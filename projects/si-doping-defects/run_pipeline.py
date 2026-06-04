@@ -47,10 +47,22 @@ def _conda_python(env: str) -> str:
     base = os.environ.get("CONDA_PREFIX", "")
     if Path(base).name == env:
         return sys.executable
+    try:
+        conda_base = subprocess.check_output(
+            ["conda", "info", "--base"],
+            text=True,
+            stderr=subprocess.DEVNULL,
+        ).strip()
+        py = Path(conda_base) / "envs" / env / "bin" / "python"
+        if py.is_file():
+            return str(py)
+    except (FileNotFoundError, subprocess.CalledProcessError):
+        pass
     for root in (
         Path.home() / "mambaforge",
         Path.home() / "miniforge3",
         Path.home() / "miniconda3",
+        Path.home() / "miniconda",
     ):
         py = root / "envs" / env / "bin" / "python"
         if py.is_file():
@@ -62,6 +74,9 @@ def step_fetch() -> Path:
     """Fetch lowest-energy Si structure from Materials Project (base-agent)."""
     STRUCTURES.mkdir(parents=True, exist_ok=True)
     out_cif = STRUCTURES / "Si_mp.cif"
+    if out_cif.exists():
+        print("=== Step: fetch (skipped, Si_mp.cif already present) ===")
+        return out_cif
     print("=== Step: fetch Si from Materials Project ===")
 
     fetch_script = PROJECT_DIR / "_fetch_si.py"
