@@ -33,3 +33,9 @@ These rules are universally applied across all aspects of this project. **You MU
 - **Secrets**: All API keys must be passed through environment variables or local `.env` files. Never hardcode credentials.
 - **Efficiency**: Use streaming processing for files with large memory footprints. Monitor memory usage and optimize iterative loops to prevent OOM errors.
 - **Debugging Blocks**: Pause immediately if you encounter an "improper format stop reason" error to analyze the trigger condition.
+
+## 5. Trajectory and Visualization Outputs
+- **Dual export**: Any user-facing code that writes an ASE **`.traj`** file must also write **`basename.extxyz`** using `src.utils.structure_utils.export_trajectory_for_ovito()`. Standard OVITO does not read `.traj` (ASE binary); extended XYZ is the portable trajectory format.
+- **Return keys**: MCP tools and wrappers should return `trajectory_path` (ASE) and `trajectory_path_ovito` (extxyz) when both exist. Point users to `.extxyz` or `relaxed_structure.cif` for OVITO; reserve `.traj` for ASE analysis and MD continuation.
+- **No one-off fixes**: Do not document OVITO workarounds only in a single project README — follow `docs/trajectory_output.md` for all new relax/MD implementations and skills.
+- **Central utility**: Do not copy-paste `ase.io.write(..., format="extxyz")` in skills; call `export_trajectory_for_ovito` so behavior stays consistent.

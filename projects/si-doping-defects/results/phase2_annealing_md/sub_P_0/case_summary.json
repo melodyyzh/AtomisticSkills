@@ -1,0 +1,38 @@
+{
+  "case": "sub_P_0",
+  "input_cif": "/home/melodyzhang/codes/AtomisticSkills/projects/si-doping-defects/results/defect_relaxations/sub_P_0/relaxed_structure.cif",
+  "n_atoms_initial": 54,
+  "n_atoms_final": 54,
+  "final_energy_eV": -470.6402776215505,
+  "final_energy_per_atom_eV": -8.71556069669538,
+  "stages": [
+    {
+      "n_log_frames": 81,
+      "final_epot_eV": -471.199,
+      "initial_epot_eV": -473.1232,
+      "final_temperature_K": 278.8,
+      "max_temperature_K": 441.9,
+      "stage": "01_equilibrate_300K",
+      "target_T_K": 300.0
+    },
+    {
+      "n_log_frames": 151,
+      "final_epot_eV": -466.8753,
+      "initial_epot_eV": -471.199,
+      "final_temperature_K": 1067.9,
+      "max_temperature_K": 1365.9,
+      "stage": "02_anneal_1000K",
+      "target_T_K": 1000.0
+    },
+    {
+      "n_log_frames": 151,
+      "final_epot_eV": -470.6403,
+      "initial_epot_eV": -466.8753,
+      "final_temperature_K": 313.7,
+      "max_temperature_K": 1159.1,
+      "stage": "03_quench_1000_to_300K",
+      "target_T_K": 1000.0
+    }
+  ],
+  "output_dir": "/home/melodyzhang/codes/AtomisticSkills/projects/si-doping-defects/results/phase2_annealing_md/sub_P_0"
+}

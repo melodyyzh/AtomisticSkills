@@ -107,6 +107,10 @@ python .agents/skills/mat-defect-energy/scripts/calculate_defect_energy.py \
 ```
 Expected: O vacancy formation energy ~6–8 eV (DFT reference: ~7.2 eV for neutral O vacancy in MgO).
 
+## Output files (relaxation)
+
+MCP `relax_structure` writes `relaxed_structure.cif`, `relax.traj` (ASE), and **`relax.extxyz`** (use in OVITO). See [trajectory_output.md](../../../docs/trajectory_output.md).
+
 ## Constraints
 - **Neutral defects only**: This skill does NOT handle charged defects. For charged defects with finite-size corrections, use [mat-defect-energy-dft](../mat-defect-energy-dft/SKILL.md).
 - **Fixed cell**: Do NOT relax the unit cell during defect relaxation — the supercell must remain fixed to be commensurate with the bulk reference.

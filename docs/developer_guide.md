@@ -52,7 +52,7 @@ Supporting libraries shared across MCP servers:
 | `mlips/` | Unified MLIP wrappers (MACE, MatGL, FairChem, MatterGen) with common predict / relax / MD / fine-tune interface |
 | `dft/` | VASP input generation and output parsing via Pymatgen |
 | `drugdisc_utils.py` | RDKit-based molecular descriptors, standardization, and PDBQT conversion |
-| `structure_utils.py` | Convert between ASE Atoms, Pymatgen Structure, and dict formats |
+| `structure_utils.py` | Convert between ASE Atoms, Pymatgen Structure, and dict formats; **`export_trajectory_for_ovito()`** (`.traj` → `.extxyz`) |
 | `structure_viz.py` | Crystal structure visualization and rendering |
 | `disordered_material/` | Order-disorder sampling for partial-occupancy structures |
 | `mlips/md_utils.py` | MD monitors (explosion, volume, melting, equilibration detection) |
@@ -82,6 +82,10 @@ Skills are **modular, self-contained capabilities** that combine multiple tools 
 ---
 
 ## Development Workflow
+
+### Trajectory outputs (relax / MD)
+
+All relax and MD paths through `MLIPModel` in `src/utils/mlips/base.py` write **both** `.traj` (ASE) and `.extxyz` (OVITO). New scripts that write `.traj` directly must call `export_trajectory_for_ovito()` — see **[trajectory_output.md](trajectory_output.md)** and **coding-standards.md §5**.
 
 ### Adding a New MCP Tool
 

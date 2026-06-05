@@ -390,6 +390,22 @@ class MLIPModel(ABC):
             opt = OptClass(opt_atoms, logfile=log_file, trajectory=traj_file)
             opt.run(fmax=fmax, steps=steps)
 
+            # Extended XYZ for OVITO (standard OVITO does not read ASE .traj)
+            extxyz_file = os.path.join(output_dir, f"{filename_base}.extxyz")
+            try:
+                from ..structure_utils import export_trajectory_for_ovito
+
+                export_trajectory_for_ovito(traj_file, extxyz_file)
+            except Exception as export_err:
+                import logging
+
+                logging.getLogger(__name__).warning(
+                    "Could not export OVITO trajectory %s: %s",
+                    extxyz_file,
+                    export_err,
+                )
+                extxyz_file = None
+
             # Clear constraints before returning/saving
             final_struct = atoms
             if hasattr(final_struct, "set_constraint"):
@@ -410,13 +426,16 @@ class MLIPModel(ABC):
                 with open(energy_file, "w") as f:
                     f.write(str(energy_val))
 
-            return {
+            result = {
                 "energy": energy_val,
                 "trajectory_path": traj_file,
                 "log_path": log_file,
                 "cif_path": cif_path,
                 "output_dir": output_dir,
             }
+            if extxyz_file:
+                result["trajectory_path_ovito"] = extxyz_file
+            return result
         except Exception as e:
             import traceback
 
@@ -821,13 +840,29 @@ class MLIPModel(ABC):
         cif_path = os.path.join(output_dir, "final_structure.cif")
         final_structure.to(filename=cif_path)
 
-        return {
+        extxyz_path = os.path.splitext(traj_path)[0] + ".extxyz"
+        try:
+            from ..structure_utils import export_trajectory_for_ovito
+
+            export_trajectory_for_ovito(traj_path, extxyz_path)
+        except Exception as export_err:
+            import logging
+
+            logging.getLogger(__name__).warning(
+                "Could not export OVITO trajectory %s: %s", extxyz_path, export_err
+            )
+            extxyz_path = None
+
+        md_result = {
             "status": "success",
             "trajectory_path": traj_path,
             "log_path": log_path,
             "cif_path": cif_path,
             "final_structure": final_structure.as_dict(),
         }
+        if extxyz_path:
+            md_result["trajectory_path_ovito"] = extxyz_path
+        return md_result
 
     def run_md(
         self,

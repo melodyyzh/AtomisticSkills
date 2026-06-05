@@ -206,7 +206,8 @@ def relax_structure(
         fixed_atoms: List of indices of atoms to keep fixed during relaxation.
 
     Returns:
-        For single: Dict with energy, trajectory_path, cif_path, json_path
+        For single: Dict with energy, trajectory_path (.traj), trajectory_path_ovito
+        (.extxyz for OVITO), log_path, cif_path, output_dir
         For batch: Dict with mode="batch", total_structures, successful, failed, results list
     """
     global wrapper
