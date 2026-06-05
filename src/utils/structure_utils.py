@@ -373,3 +373,40 @@ def expand_structure(
     if is_pmg:
         return AseAtomsAdaptor.get_structure(expanded_atoms)
     return expanded_atoms
+
+
+def export_trajectory_for_ovito(
+    traj_path: Union[str, Path],
+    extxyz_path: Optional[Union[str, Path]] = None,
+) -> str:
+    """
+    Convert an ASE native trajectory (.traj) to extended XYZ for OVITO.
+
+    **Project convention** (see ``docs/trajectory_output.md``): every user-facing
+    code path that writes ``.traj`` must call this function and document both
+    ``trajectory_path`` and ``trajectory_path_ovito`` in outputs.
+
+    ASE .traj files use the UlmASE-Trajectory binary format and are not
+    readable by standard OVITO (OVITO Pro can load .traj only with ASE installed).
+    Extended XYZ (.extxyz) is the portable multi-frame format for OVITO, VMD, etc.
+
+    Args:
+        traj_path: Path to input .traj file.
+        extxyz_path: Output path; defaults to same stem with .extxyz suffix.
+
+    Returns:
+        Path to the written extxyz file.
+    """
+    from ase.io import read, write
+
+    traj_path = Path(traj_path)
+    if extxyz_path is None:
+        extxyz_path = traj_path.with_suffix(".extxyz")
+    else:
+        extxyz_path = Path(extxyz_path)
+
+    images = read(str(traj_path), index=":")
+    if not isinstance(images, list):
+        images = [images]
+    write(str(extxyz_path), images, format="extxyz")
+    return str(extxyz_path)

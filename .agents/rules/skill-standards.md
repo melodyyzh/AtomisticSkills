@@ -100,7 +100,7 @@ Provide concrete, runnable examples that demonstrate typical usage.
 **LITERATURE VALIDATION RULE:** Whenever possible, choose an example system with known, published literature reported values. In the example's `README.md`, you MUST compare the skill's execution results to the reported literature values to validate the skill's correctness, and explicitly include the literature reference citation.
 
 > [!WARNING]
-> **Artifact Retention**: Example folders are purely for structural reference and lightweight logging. NEVER commit or retain large execution artifacts such as PyTorch model checkpoints (`.pth`, `.model`), checkpoint snapshots (`.pt`), or uncompressed trajectory aggregations (`.xyz`) inside these example subdirectories.
+> **Artifact Retention**: Example folders are purely for structural reference and lightweight logging. NEVER commit or retain large execution artifacts such as PyTorch model checkpoints (`.pth`, `.model`), checkpoint snapshots (`.pt`), or uncompressed trajectory aggregations (`.extxyz`, `.xyz`) inside these example subdirectories.
 
 **3D STRUCTURE RENDERING RULE:** To ensure compatibility with the documentation website's automatic 3D structure viewer (3Dmol.js), any `.cif` or `.xyz` files you want rendered MUST be written as standard markdown links (e.g., `[my_structure.cif](my_structure.cif)`). Do NOT write them merely as backticked code snippets (` `my_structure.cif` `) within tables or lists, as they will not be rendered. It is recommended to add a dedicated "## 3D Structures" section at the end of the `README.md` for these links.
 
@@ -206,6 +206,7 @@ The required environment must be consistent across:
 - **Integration**: Prioritize existing MCP tools over custom code. If writing custom MLIP scripts, ALWAYS use `src.utils.mlips.loader.load_wrapper`.
 - **Validation & Documentation**: Embed verification steps, document expected outcomes, and use concrete, reproducible parameters in examples.
 - **Parameter Persistence**: Skill scripts that accept input kwargs and hyperparameters **must** save all input parameters to a **separate `input_configs.yaml`** file in the same output directory where results are written. This file must capture both user-specified values **and** the default values of any parameters that were not explicitly provided. Do **not** embed configs inside JSON output files (e.g. as a `"config"` key). This ensures results remain clean and can be fully interpreted and reproduced in the future without re-inspecting the source code or command history.
+- **Trajectory outputs (OVITO)**: If a skill or script writes ASE `.traj` files, it **must** also export matching `.extxyz` via `export_trajectory_for_ovito()` (see `docs/trajectory_output.md`). Document `*.extxyz` as the visualization path and `*.traj` as the ASE analysis path in SKILL.md output tables.
 
 ## Skill Naming Conventions
 

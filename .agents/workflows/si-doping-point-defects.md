@@ -59,7 +59,7 @@ conda run -n mace-agent python run_pipeline.py --step relax_bulk
 
 ### 4. Relax pristine supercell and each defect
 
-**MCP:** `mcp_mace_relax_structure` with `relax_cell=False` (fixed supercell volume).
+**MCP:** `mcp_mace_relax_structure` with `relax_cell=False` (fixed supercell volume). Each output directory includes `relaxed_structure.cif`, `relax.traj`, and **`relax.extxyz`** (OVITO — see `docs/trajectory_output.md`).
 
 - Pristine → `results/pristine_relaxation/`
 - Each defect → `results/defect_relaxations/<name>/`

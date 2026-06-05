@@ -233,7 +233,8 @@ def relax_structure(
         output_dir: Directory to save results. For batch mode, each structure gets a subdirectory.
 
     Returns:
-        For single: Dict with energy, trajectory_path, cif_path, json_path
+        For single: Dict with energy, trajectory_path (.traj), trajectory_path_ovito
+        (.extxyz), cif_path, output_dir
         For batch: Dict with mode="batch", total_structures, successful, failed, results list
     """
     global wrapper

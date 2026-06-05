@@ -1,4 +1,12 @@
-# Structural Visualization with Matterviz
+# Structural Visualization
+
+## Trajectories (OVITO, VMD, etc.)
+
+Relaxation and MD from AtomisticSkills write ASE **`.traj`** files plus companion **`.extxyz`** files for visualization. **Use `.extxyz` in OVITO**, not `.traj`, unless you use OVITO Pro with the ASE plugin installed.
+
+See **[trajectory_output.md](trajectory_output.md)** for the full project convention (required for all new relax/MD code and skills).
+
+## Static structures — Matterviz
 
 For high-fidelity 3D visualization of crystal structures (CIF, POSCAR, XYZ), we recommend using the **Matterviz** extension. This allows for interactive rendering directly within the VS Code / Antigravity editor. Matterviz visualization works seamlessly even when the structure files and the Antigravity session are on a **remote server** (connected via SSH). The rendering is handled locally in the agent session.
 
