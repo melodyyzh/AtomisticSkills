@@ -1,0 +1,156 @@
+{
+  "cases": [
+    {
+      "case": "pristine",
+      "input_cif": "/home/melodyzhang/codes/AtomisticSkills/projects/si-doping-defects/results/pristine_relaxation/relaxed_structure.cif",
+      "n_atoms_initial": 54,
+      "n_atoms_final": 54,
+      "final_energy_eV": -470.54647882064256,
+      "final_energy_per_atom_eV": -8.713823681863751,
+      "stages": [
+        {
+          "n_log_frames": 81,
+          "final_epot_eV": -470.8975,
+          "initial_epot_eV": -472.9754,
+          "final_temperature_K": 255.2,
+          "max_temperature_K": 433.6,
+          "stage": "01_equilibrate_300K",
+          "target_T_K": 300.0
+        },
+        {
+          "n_log_frames": 151,
+          "final_epot_eV": -467.2787,
+          "initial_epot_eV": -470.8975,
+          "final_temperature_K": 1167.7,
+          "max_temperature_K": 1505.7,
+          "stage": "02_anneal_1000K",
+          "target_T_K": 1000.0
+        },
+        {
+          "n_log_frames": 151,
+          "final_epot_eV": -470.5465,
+          "initial_epot_eV": -467.2787,
+          "final_temperature_K": 350.5,
+          "max_temperature_K": 1226.8,
+          "stage": "03_quench_1000_to_300K",
+          "target_T_K": 1000.0
+        }
+      ],
+      "output_dir": "/home/melodyzhang/codes/AtomisticSkills/projects/si-doping-defects/results/phase2_annealing_md/pristine"
+    },
+    {
+      "case": "vac_Si_0",
+      "input_cif": "/home/melodyzhang/codes/AtomisticSkills/projects/si-doping-defects/results/defect_relaxations/vac_Si_0/relaxed_structure.cif",
+      "n_atoms_initial": 53,
+      "n_atoms_final": 53,
+      "final_energy_eV": -457.6890481572784,
+      "final_energy_per_atom_eV": -8.635642418061858,
+      "stages": [
+        {
+          "n_log_frames": 81,
+          "final_epot_eV": -458.4826,
+          "initial_epot_eV": -460.5356,
+          "final_temperature_K": 260.0,
+          "max_temperature_K": 400.9,
+          "stage": "01_equilibrate_300K",
+          "target_T_K": 300.0
+        },
+        {
+          "n_log_frames": 151,
+          "final_epot_eV": -453.0428,
+          "initial_epot_eV": -458.4826,
+          "final_temperature_K": 902.9,
+          "max_temperature_K": 1359.0,
+          "stage": "02_anneal_1000K",
+          "target_T_K": 1000.0
+        },
+        {
+          "n_log_frames": 151,
+          "final_epot_eV": -457.689,
+          "initial_epot_eV": -453.0428,
+          "final_temperature_K": 261.8,
+          "max_temperature_K": 1155.4,
+          "stage": "03_quench_1000_to_300K",
+          "target_T_K": 1000.0
+        }
+      ],
+      "output_dir": "/home/melodyzhang/codes/AtomisticSkills/projects/si-doping-defects/results/phase2_annealing_md/vac_Si_0"
+    },
+    {
+      "case": "int_Si_0",
+      "input_cif": "/home/melodyzhang/codes/AtomisticSkills/projects/si-doping-defects/results/defect_relaxations/int_Si_0/relaxed_structure.cif",
+      "n_atoms_initial": 55,
+      "n_atoms_final": 55,
+      "final_energy_eV": -475.24172084594557,
+      "final_energy_per_atom_eV": -8.640758560835375,
+      "stages": [
+        {
+          "n_log_frames": 81,
+          "final_epot_eV": -475.75,
+          "initial_epot_eV": -477.2432,
+          "final_temperature_K": 318.2,
+          "max_temperature_K": 404.5,
+          "stage": "01_equilibrate_300K",
+          "target_T_K": 300.0
+        },
+        {
+          "n_log_frames": 151,
+          "final_epot_eV": -469.996,
+          "initial_epot_eV": -475.75,
+          "final_temperature_K": 977.9,
+          "max_temperature_K": 1309.5,
+          "stage": "02_anneal_1000K",
+          "target_T_K": 1000.0
+        },
+        {
+          "n_log_frames": 151,
+          "final_epot_eV": -475.2417,
+          "initial_epot_eV": -469.996,
+          "final_temperature_K": 371.6,
+          "max_temperature_K": 1124.0,
+          "stage": "03_quench_1000_to_300K",
+          "target_T_K": 1000.0
+        }
+      ],
+      "output_dir": "/home/melodyzhang/codes/AtomisticSkills/projects/si-doping-defects/results/phase2_annealing_md/int_Si_0"
+    },
+    {
+      "case": "sub_P_0",
+      "input_cif": "/home/melodyzhang/codes/AtomisticSkills/projects/si-doping-defects/results/defect_relaxations/sub_P_0/relaxed_structure.cif",
+      "n_atoms_initial": 54,
+      "n_atoms_final": 54,
+      "final_energy_eV": -470.6402776215505,
+      "final_energy_per_atom_eV": -8.71556069669538,
+      "stages": [
+        {
+          "n_log_frames": 81,
+          "final_epot_eV": -471.199,
+          "initial_epot_eV": -473.1232,
+          "final_temperature_K": 278.8,
+          "max_temperature_K": 441.9,
+          "stage": "01_equilibrate_300K",
+          "target_T_K": 300.0
+        },
+        {
+          "n_log_frames": 151,
+          "final_epot_eV": -466.8753,
+          "initial_epot_eV": -471.199,
+          "final_temperature_K": 1067.9,
+          "max_temperature_K": 1365.9,
+          "stage": "02_anneal_1000K",
+          "target_T_K": 1000.0
+        },
+        {
+          "n_log_frames": 151,
+          "final_epot_eV": -470.6403,
+          "initial_epot_eV": -466.8753,
+          "final_temperature_K": 313.7,
+          "max_temperature_K": 1159.1,
+          "stage": "03_quench_1000_to_300K",
+          "target_T_K": 1000.0
+        }
+      ],
+      "output_dir": "/home/melodyzhang/codes/AtomisticSkills/projects/si-doping-defects/results/phase2_annealing_md/sub_P_0"
+    }
+  ]
+}

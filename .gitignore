@@ -104,3 +104,17 @@ site/skills_index.json
 .cursor/mcp.json
 .windsurfrules
 .windsurfrules.local
+
+# si-doping-defects: track summary artifacts only (trajectories/logs stay local)
+!projects/si-doping-defects/results/
+projects/si-doping-defects/results/**
+!projects/si-doping-defects/results/ANALYSIS.md
+!projects/si-doping-defects/results/defect_energies.json
+!projects/si-doping-defects/results/input_configs.yaml
+!projects/si-doping-defects/results/phase2_annealing_md/
+projects/si-doping-defects/results/phase2_annealing_md/**
+!projects/si-doping-defects/results/phase2_annealing_md/MD_ANNEALING_ANALYSIS.md
+!projects/si-doping-defects/results/phase2_annealing_md/phase2_summary.json
+!projects/si-doping-defects/results/phase2_annealing_md/*/
+projects/si-doping-defects/results/phase2_annealing_md/*/**
+!projects/si-doping-defects/results/phase2_annealing_md/*/case_summary.json

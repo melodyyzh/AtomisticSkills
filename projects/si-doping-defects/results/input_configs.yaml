@@ -1,0 +1,8 @@
+bulk_dir: /home/melodyzhang/codes/AtomisticSkills/projects/si-doping-defects/results/pristine_relaxation
+defect_dir: /home/melodyzhang/codes/AtomisticSkills/projects/si-doping-defects/results/defect_relaxations
+supercell_size:
+- 3
+- 3
+- 3
+elemental_energies: /home/melodyzhang/codes/AtomisticSkills/.agents/skills/mat-elemental-energies/resources/MACE-MH-1_matpes_r2scan_energies.json
+output: /home/melodyzhang/codes/AtomisticSkills/projects/si-doping-defects/results/defect_energies.json
