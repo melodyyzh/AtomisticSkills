@@ -222,10 +222,9 @@ Examples:
         print(f"Error: {str(e)}", file=sys.stderr)
         sys.exit(1)
 
-    # Save input configs for reproducibility
     from src.utils.config_utils import save_skill_inputs
 
-    save_skill_inputs(args, args.output_dir)
+    save_skill_inputs(args, str(Path(args.output).parent))
 
 
 if __name__ == "__main__":
